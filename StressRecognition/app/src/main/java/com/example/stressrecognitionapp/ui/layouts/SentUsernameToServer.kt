@@ -1,6 +1,7 @@
 package com.example.stressrecognitionapp.ui.layouts
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -13,7 +14,10 @@ import com.example.stressrecognitionapp.viewModel.UserSentViewModel
 fun SentUsernameToServer(username: String, navController: NavController) {
     val userSentViewModel = viewModel(modelClass = UserSentViewModel::class.java)
     val usernameRequest = UsernameRequest(username = username)
-    userSentViewModel.getUsernameReceivedStatus(usernameRequest = usernameRequest)
+
+    LaunchedEffect(username){
+        userSentViewModel.getUsernameReceivedStatus(usernameRequest = usernameRequest)
+    }
 
     val state by userSentViewModel.state.collectAsState()
 

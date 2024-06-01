@@ -1,6 +1,5 @@
 package com.example.stressrecognitionapp.viewModel
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -29,7 +28,6 @@ class UserSentViewModel: ViewModel() {
                 if (apiResponse.isSuccessful && apiResponse.body() != null){
                     usernameReceivedStatus = apiResponse.body()!!
                     _state.value = ApiState.SUCCESS
-                    Log.d("ApiSuccess", usernameReceivedStatus.message)
                 }
             }
             catch (ex:Exception){
