@@ -25,16 +25,17 @@ fun Homepage(
     navController: NavController,
 ){
     val modelDataViewModel = viewModel(modelClass = ModelDataViewModel::class.java)
+
     // LaunchedEffect(key1 = true) ensure the network call is made only once
     // (jetpack compose has side effect that composable functions can lead to repeated calls on
     // every recompositions
     LaunchedEffect(key1 = true){
         modelDataViewModel.getUserData()
     }
+
     val userDataResponse by modelDataViewModel.modelDataResponse.collectAsState()
     val userData = userDataResponse.data
     val label = userDataResponse.label
-
     val state by modelDataViewModel.state.collectAsState()
 
 //  The LaunchedEffect is used to collect changes to the LazyListState (specifically, changes to

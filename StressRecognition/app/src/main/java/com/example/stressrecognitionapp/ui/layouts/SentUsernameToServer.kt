@@ -15,7 +15,7 @@ fun SentUsernameToServer(username: String, navController: NavController) {
     val userSentViewModel = viewModel(modelClass = UserSentViewModel::class.java)
     val usernameRequest = UsernameRequest(username = username)
 
-    LaunchedEffect(username){
+    LaunchedEffect(key1=true){
         userSentViewModel.getUsernameReceivedStatus(usernameRequest = usernameRequest)
     }
 

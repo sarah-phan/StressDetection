@@ -1,5 +1,6 @@
 package com.example.stressrecognitionapp.viewModel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -21,6 +22,7 @@ class UserSentViewModel: ViewModel() {
     var errorMsg: String by mutableStateOf("")
 
     fun getUsernameReceivedStatus(usernameRequest: UsernameRequest){
+        Log.d("getUsernameReceivedStatus","EXECUTING")
         viewModelScope.launch {
             _state.value = ApiState.LOADING
             val apiResponse = RetrofitClient.instance.getUsernameMessage(usernameRequest)

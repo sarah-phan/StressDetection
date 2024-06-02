@@ -62,13 +62,17 @@ fun Login(userViewModel: UserViewModel, navController: NavController) {
     Log.d("passwordShow", BCrypt.hashpw(password, BCrypt.gensalt()))
 
     if(loginSuccess){
-        SentUsernameToServer(username = username, navController = navController)
+        SentUsernameToServer(
+            username = username,
+            navController = navController
+        )
+        loginSuccess = false  // Reset to prevent further recomposition
     }
 
     Box(
         modifier = Modifier
-        .background(Color(0xFF51A1C5).copy(alpha = 0.5f))
-        .fillMaxSize()
+            .background(Color(0xFF51A1C5).copy(alpha = 0.5f))
+            .fillMaxSize()
     ) {
         Column(
             modifier = Modifier.padding(10.dp),
